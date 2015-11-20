@@ -583,6 +583,9 @@ class Mail(_MailMixin):
         # register extension with app
         app.extensions = getattr(app, 'extensions', {})
         app.extensions['mail'] = state
+
+        self._state = state
+
         return state
 
     def __getattr__(self, name):
