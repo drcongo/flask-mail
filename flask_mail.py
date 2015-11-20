@@ -157,7 +157,7 @@ class Connection(object):
         else:
             host = smtplib.SMTP(self.mail.server, self.mail.port)
 
-        host.set_debuglevel(int(self.mail.debug))
+        host.set_debuglevel(int(self.mail.debug or 0))
 
         if self.mail.use_tls:
             host.starttls()
