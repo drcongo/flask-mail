@@ -148,7 +148,7 @@ class Connection(object):
         return self
 
     def __exit__(self, exc_type, exc_value, tb):
-        if self.host:
+        if self.host and getattr(self.host, 'sock', None):
             self.host.quit()
 
     def configure_host(self):
@@ -584,7 +584,7 @@ class Mail(_MailMixin):
         app.extensions = getattr(app, 'extensions', {})
         app.extensions['mail'] = state
 
-        self._state = state
+        self.state = state
 
         return state
 
